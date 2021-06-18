@@ -1,27 +1,45 @@
 #include<iostream>
-#include<string>
 #include<fstream>
+#include<string>
+#define N 4
 using namespace std;
 
-char mat[6][3][3]={0},temp[3]={0},rubik[6][3][3]={0};
-
-void getKey()
-{
-  ifstream ifile("letterlist.txt");
-  for (int x = 0 ; x <6; ++x)
-      {
-           for (int y = 0 ; y <3; ++y)
-           {
-               for (int z = 0 ; z <3; ++z)
-               {
-                   ifile >> noskipws >>mat[x][y][z];
-                   rubik[x][y][z]=mat[x][y][z];
-               }
-           }
-      }
-    ifile.close();
-} 
+char cube[4][4][4]; //dimensinya [rows][columns][layers],
+char temp_matrix[4][4];
 
 int main(){
-    string input;
+    string key;
+    string plainText;
+
+    ifstream getKey;
+    getKey.open("key.txt");
+    getKey >> key;
+    getKey.close();
+    
+    ifstream getPlainText("plaintext.txt");
+    for (int x = 0 ; x <4; ++x)
+    {
+        for (int y = 0 ; y <4; ++y)
+        {
+            for (int z = 0 ; z <4; ++z)
+            {
+                getPlainText >> noskipws >>cube[x][y][z];
+            }
+        }       
+    }
+    getPlainText.close();
+    
+    
+    cout <<"The Key is "<<key<<endl;
+    for (int x = 0 ; x <4; ++x)
+    {
+        for (int y = 0 ; y <4; ++y)
+        {
+            for (int z = 0 ; z <4; ++z)
+            {
+               cout <<cube[x][y][z];
+            }
+        }
+        cout<<endl;
+    }
 }
