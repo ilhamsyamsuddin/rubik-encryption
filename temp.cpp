@@ -146,4 +146,18 @@ int main()
       cout<<"\nThe key for decryption is stored in key.txt...\n";
       cout<<"\nCiphertext is stored in ciphertext.txt\n";           
       getch();
-}     
+}
+
+void clockwise(int arr[N][N])
+{
+    int k;
+    for (int i = 0; i < N; i++)
+    {
+        k = N-1;
+        for (int j = 0; j < k; j++)
+        {
+            swap(arr[j][i], arr[k][i]);
+            k--;
+        }
+    }
+}
