@@ -19,23 +19,22 @@ void rotate(char arr[N][N], char clockwise){
     switch (clockwise)
     {
         case '1':
-            int k;
-            for (int i = 0; i < N; i++){
-                k = N-1;
-                for (int j = 0; j < k; j++){
-                    swap(arr[j][i], arr[k][i]);
-                    k--;
-                }
-            }
-            break;
-
-        case '0':
             int l;
             for (int i = 0; i < N; i++){
                 l = N-1;
                 for (int j = 0; j < l; j++){
                     swap(arr[i][j], arr[i][l]);
                     l--;
+                }
+            }
+            break;
+        case '0':
+            int k;
+            for (int i = 0; i < N; i++){
+                k = N-1;
+                for (int j = 0; j < k; j++){
+                    swap(arr[j][i], arr[k][i]);
+                    k--;
                 }
             }
             break;
@@ -52,18 +51,18 @@ int main(){
     getKey >> key;
     getKey.close();
     
-    ifstream getPlainText("plaintext.txt");//input plaintext
+    ifstream getCipherText("ciphertext.txt");//input ciphertext
     for (int x = 0 ; x <4; ++x){
         for (int y = 0 ; y <4; ++y){
             for (int z = 0 ; z <4; ++z){
-                getPlainText >> noskipws >>cube[x][y][z];
+                getCipherText >> noskipws >>cube[x][y][z];
             }
         }       
     }
-    getPlainText.close();
+    getCipherText.close();
 
     cout <<"The Key is "<<key<<endl;
-    cout<<"the Plainetext is"<<endl;
+    cout<<"the ciphertext is"<<endl;
     for (int x = 0 ; x <4; ++x)
     {
         for (int y = 0 ; y <4; ++y)
@@ -77,8 +76,7 @@ int main(){
     }
     cout<<endl;
     
-    for (int index = 0; index < key.length(); index+=3){
-
+    for (int index = (key.length()-3); index >=0; index-=3){
         switch(key[index]) {
         case 'R':
             for (int i = 0; i < N; i++){
@@ -146,19 +144,14 @@ int main(){
         cout<<endl;                
     }*/
 
-    cout<<"the Cyphertext is"<<endl;
-    ofstream putCipher("ciphertext.txt");
-    for (int x = 0 ; x <4; ++x)
-    {
-        for (int y = 0 ; y <4; ++y)
-        {
-            for (int z = 0 ; z <4; ++z)
-            {
-               putCipher << noskipws<<cube[x][y][z];
+    cout<<"the deciphered plainetx is stored in plaintext2.txt"<<endl;
+    ofstream putPlainText("plaintext2.txt");
+    for (int x = 0 ; x <4; ++x){
+        for (int y = 0 ; y <4; ++y){
+            for (int z = 0 ; z <4; ++z){
+               putPlainText << noskipws<<cube[x][y][z];
             }
         }
-        //cout<<endl;
     }
-    putCipher.close();
-    cout<<endl; 
+    putPlainText.close();
 }

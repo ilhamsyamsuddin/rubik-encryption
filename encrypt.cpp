@@ -146,17 +146,14 @@ int main(){
         cout<<endl;                
     }*/
 
-    cout<<"the Cyphertext is"<<endl;
-    for (int x = 0 ; x <4; ++x)
-    {
-        for (int y = 0 ; y <4; ++y)
-        {
-            for (int z = 0 ; z <4; ++z)
-            {
-               cout <<cube[x][y][z];
+    cout<<"the Cyphertext is stored in ciphertext.txt"<<endl;
+    ofstream putCipher("ciphertext.txt");
+    for (int x = 0 ; x <4; ++x){
+        for (int y = 0 ; y <4; ++y){
+            for (int z = 0 ; z <4; ++z){
+               putCipher << noskipws<<cube[x][y][z];
             }
         }
-        //cout<<endl;
     }
-    cout<<endl; 
+    putCipher.close();
 }
