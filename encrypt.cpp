@@ -52,7 +52,7 @@ int main(){
     getKey >> key;
     getKey.close();
     
-    ifstream getPlainText("plaintext.txt");//input plaintext
+    ifstream getPlainText("plaintext.txt");//input plaintext to array
     for (int x = 0 ; x <4; ++x){
         for (int y = 0 ; y <4; ++y){
             for (int z = 0 ; z <4; ++z){
@@ -80,7 +80,7 @@ int main(){
     for (int index = 0; index < key.length(); index+=3){
 
         switch(key[index]) {
-        case 'R':
+        case 'R'://shift row
             for (int i = 0; i < N; i++){
                 operated = key[index+1]-48;
                 for (int j = 0; j < N; j++){
